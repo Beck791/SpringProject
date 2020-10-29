@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="logProvider" class="tw.leonchen.util.LogProvider"></bean>
+	<bean id="logProvider2" class="tw.leonchen.util.LogProvider2" />
+	<bean id="loginDao" class="tw.leonchen.model.LoginDAO" />
+	<bean id="loginService1" class="tw.leonchen.model.LoginService">
+		<constructor-arg ref="loginDao"></constructor-arg>
+	</bean>
+
+	<bean id="loginService2" class="tw.leonchen.model.LoginService">
+		<property name="loginDao" ref="loginDao"/>
+	</bean>
+	
+	<bean id="person" class="tw.leonchen.model.Person">
+	<property name="nickName" value="maverick"></property>
+	</bean>
+
+</beans>
