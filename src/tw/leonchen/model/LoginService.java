@@ -1,7 +1,12 @@
 package tw.leonchen.model;
 
-public class LoginService {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service(value = "lgService")
+public class LoginService {
+	
+	@Autowired
 	private LoginDAO loginDao;
 
 	public LoginService() {
