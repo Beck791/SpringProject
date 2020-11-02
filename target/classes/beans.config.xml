@@ -9,7 +9,25 @@
 
  	<context:annotation-config/>
  	<context:component-scan base-package="tw.leonchen"/>
+ 	
+ 	
+ 	<bean id="SQLserverDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+ 	<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+ 	<property name="url" value="jdbc:sqlserver://Localhost:1433;databaseName=leonPower"/>
+ 	<property name="username" value="sa"/>
+ 	<property name="password" value="passw0rd"/>
+ 	</bean>
+ 	
+<!--  	<bean id="houseDao" class="tw.leonchen.model.HouseDAO"> -->
+<!--  	<constructor-arg ref="SQLserverDataSource"></constructor-arg> -->
+<!--  	</bean> 	 -->
+ 	
+<!-- 	<bean id="houseService" class="tw.leonchen.model.HouseService"> -->
+<!-- 	<constructor-arg ref="houseDao"/> -->
+<!-- 	</bean> -->
 
+<!--  	<bean id="houseBean" class="tw.leonchen.model.House"/> -->
+ 	
 	<bean id="props" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
 	    <property name="location">
 	       <value>classpath:tree.properties</value>
@@ -46,7 +64,7 @@
 <!-- 		<property name="loginDao" ref="loginDao" /> -->
 <!-- 	</bean> -->
 
-	<bean id="person" class="tw.leonchen.model.Person">
+	<bean id="person" class="tw.leonchen.model.Person" init-method="init" destroy-method="destroy" scope="prototype">
 		<property name="nickName" value="maverick"></property>
 	</bean>
 
